@@ -46,7 +46,11 @@ public class ProtoIniReader {
 				// parse each line
 				for(String l:lines) {
 					String[] splitLine = l.split("=", 2);
-					variables.put(splitLine[0], splitLine[1]);
+					if(!variables.containsKey(splitLine[0])) {
+						variables.put(splitLine[0], splitLine[1]);
+					} else {
+						log("Error: Duplicate key skipped - " + splitLine[0], ProtoIniReader.class);
+					}
 				}
 				
 				print(variables.toString());

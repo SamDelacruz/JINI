@@ -12,14 +12,14 @@ package com.samdlc.jini;
  * @author Sam Delacruz
  * @version 101
  */
-public class Property {
+public class PropertyImpl implements IProperty {
 	private String name;
 	private String value;
 	
 	/**
 	 * Prevents use of the default constructor
 	 */
-	private Property() {
+	private PropertyImpl() {
 		
 	}
 	
@@ -28,7 +28,7 @@ public class Property {
 	 * @param value the value of the property
 	 * @throws IllegalArgumentException when passed a null or empty name
 	 */
-	public Property(String name, String value) throws IllegalArgumentException{
+	public PropertyImpl(String name, String value) throws IllegalArgumentException{
 		if(null != name && !name.trim().isEmpty()) {
 			this.setName(name);
 			this.setValue(value);
@@ -37,9 +37,10 @@ public class Property {
 		}
 	}
 
-	/**
-	 * @return the current name of the parameter
+	/* (non-Javadoc)
+	 * @see com.samdlc.jini.Property#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -56,9 +57,10 @@ public class Property {
 		}
 	}
 
-	/**
-	 * @return the current property value
+	/* (non-Javadoc)
+	 * @see com.samdlc.jini.Property#getValue()
 	 */
+	@Override
 	public String getValue() {
 		return value;
 	}

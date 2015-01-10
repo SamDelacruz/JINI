@@ -19,6 +19,15 @@ public class SectionImpl implements ISection {
 		
 	}
 	
+	public SectionImpl(String name) throws IllegalArgumentException{
+		if(null != name && !"".equals(name.trim())) {
+			this.name = name;
+			properties = new ArrayList<IProperty>();
+		} else {
+			throw new IllegalArgumentException("Section must have a name");
+		}
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.samdlc.jini.ISection#addProperty(java.lang.String, java.lang.String)
 	 */
@@ -139,4 +148,14 @@ public class SectionImpl implements ISection {
 		return properties.get(index).getValue();
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(IProperty prop:properties) {
+			sb.append(prop.toString());
+		}
+		return sb.toString();
+	}
+	
+	
 }

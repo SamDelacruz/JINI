@@ -80,5 +80,19 @@ public class PropertyImplTest {
 		IProperty prop = new PropertyImpl("prop", "value");
 		assertTrue("Value did not match expected value of 'value'", "prop".equals(prop.getName()));
 	}
+	
+	@Test
+	public void testEqualsTrue() {
+		IProperty prop1 = new PropertyImpl("prop", "val");
+		IProperty prop2 = new PropertyImpl("prop", "test");
+		assertTrue(prop1.equals(prop2));
+	}
+	
+	@Test
+	public void testEqualsFalse() {
+		IProperty prop1 = new PropertyImpl("prop", "val");
+		IProperty prop2 = new PropertyImpl("prop2", "test");
+		assertFalse(prop1.equals(prop2));
+	}
 
 }

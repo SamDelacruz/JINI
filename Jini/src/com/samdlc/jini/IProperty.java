@@ -1,5 +1,9 @@
 package com.samdlc.jini;
 
+/**
+ * @author Sam Delacruz
+ * @version 101
+ */
 public interface IProperty {
 
 	/**

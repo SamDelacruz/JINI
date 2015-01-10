@@ -75,6 +75,32 @@ public class PropertyImpl implements IProperty {
 			this.value = "";
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof IProperty) {
+			IProperty propOther = (IProperty) obj;
+			if(this.getName().equals(propOther.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "{name: "+this.getName()+", value: "+this.getValue()+"}";
+	}
+	
+	
+	
+	
 	
 	
 }

@@ -95,7 +95,7 @@ public class PropertyImpl implements IProperty {
 	 */
 	@Override
 	public String toString() {
-		return "{name: "+this.getName()+", value: "+this.getValue()+"}";
+		return this.getName()+"="+this.getValue();
 	}
 	
 	

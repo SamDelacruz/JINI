@@ -77,8 +77,10 @@ public class SectionImpl implements ISection {
 	@Override
 	public void deleteProperty(String name) {
 		for(IProperty prop:properties) {
-			if(prop.getName().equals(name))
+			if(prop.getName().equals(name)) {
 				properties.remove(prop);
+				return;
+			}
 		}
 	}
 
@@ -117,7 +119,7 @@ public class SectionImpl implements ISection {
 		for(IProperty prop: properties) {
 			names.add(prop.getName());
 		}
-		return (String[]) names.toArray();
+		return names.toArray(new String[0]);
 	}
 
 	/* (non-Javadoc)
@@ -129,7 +131,7 @@ public class SectionImpl implements ISection {
 		for(IProperty prop:properties) {
 			values.add(prop.getValue());
 		}
-		return (String[]) values.toArray();
+		return values.toArray(new String[0]);
 	}
 
 	/* (non-Javadoc)
@@ -151,11 +153,20 @@ public class SectionImpl implements ISection {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
+		sb.append("["+this.getName()+"]\n");
 		for(IProperty prop:properties) {
-			sb.append(prop.toString());
+			sb.append(prop.toString()+"\n");
 		}
 		return sb.toString();
 	}
 	
+	@Override
+	public boolean equals(Object other) {
+		if(other instanceof ISection) {
+			if((this.getName().equals(((ISection)other).getName())))
+					return true;
+		}
+		return false;
+	}
 	
 }

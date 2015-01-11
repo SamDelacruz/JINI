@@ -103,7 +103,8 @@ public class ParserImpl implements IParser {
 			// Parsed as property
 			String name = line.trim().substring(0, line.trim().indexOf("="));
 			String value = line.trim().substring(line.trim().indexOf("=")+1);
-			return new String[]{name,value};
+			if(!name.contains(" "))
+				return new String[]{name,value};
 		}
 		// Invalid line, return null
 		return null;

@@ -97,12 +97,12 @@ public class ParserImpl implements IParser {
 		String s = line.replaceAll(" ", "");
 		if(s.startsWith("[") && s.endsWith("]") && s.length() > 2) {
 			// Parsed as section
-			return new String[]{s.substring(1, s.length()-1)};
+			return new String[]{line.trim().substring(1, line.trim().length()-1)};
 		}
 		if(s.contains("=") && s.length() > 2 && s.indexOf("=") > 0) {
 			// Parsed as property
-			String name = s.substring(0, s.indexOf("="));
-			String value = s.substring(s.indexOf("=")+1);
+			String name = line.trim().substring(0, line.trim().indexOf("="));
+			String value = line.trim().substring(line.trim().indexOf("=")+1);
 			return new String[]{name,value};
 		}
 		// Invalid line, return null

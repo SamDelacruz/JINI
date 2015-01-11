@@ -21,7 +21,7 @@ public class SectionImpl implements ISection {
 	
 	public SectionImpl(String name) throws IllegalArgumentException{
 		if(null != name && !"".equals(name.trim())) {
-			this.name = name;
+			this.name = name.trim().toLowerCase();
 			properties = new ArrayList<IProperty>();
 		} else {
 			throw new IllegalArgumentException("Section must have a name");

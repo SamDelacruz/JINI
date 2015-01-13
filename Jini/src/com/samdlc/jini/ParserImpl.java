@@ -31,6 +31,7 @@ public class ParserImpl implements IParser {
 
 			if(null != parsedLine) {
 				if(parsedLine.length == 1) {
+
 					//section - create new section and move on
 					sectionList.add(current);
 					current = sectionClass.getDeclaredConstructor(String.class).newInstance(parsedLine[0]);
@@ -95,19 +96,18 @@ public class ParserImpl implements IParser {
 
 	private String[] parseLine(String line) {
 		String s = line.replaceAll(" ", "");
-		if(s.startsWith("[") && s.endsWith("]") && s.length() > 2) {
+		if (s.startsWith("[") && s.endsWith("]") && s.length() > 2) {
 			// Parsed as section
-			return new String[]{line.trim().substring(1, line.trim().length()-1)};
+			return new String[]{line.trim().substring(1, line.trim().length() - 1)};
 		}
-		if(s.contains("=") && s.length() > 2 && s.indexOf("=") > 0) {
+		if (s.contains("=") && s.length() > 2 && s.indexOf("=") > 0) {
 			// Parsed as property
 			String name = line.trim().substring(0, line.trim().indexOf("="));
-			String value = line.trim().substring(line.trim().indexOf("=")+1);
-			if(!name.contains(" "))
-				return new String[]{name,value};
+			String value = line.trim().substring(line.trim().indexOf("=") + 1);
+			if (!name.contains(" "))
+				return new String[]{name, value};
 		}
 		// Invalid line, return null
 		return null;
 	}
-	
 }
